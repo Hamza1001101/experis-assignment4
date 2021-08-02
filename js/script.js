@@ -21,7 +21,7 @@ function fetchData() {
 }
 
 const selectLaptops = document.getElementById('laptops')
-async function getNames() {
+async function getItemNames() {
     const result = [];
     const data = await fetchData();
 
@@ -35,6 +35,6 @@ async function getNames() {
 
 }
 
-getNames()
+getItemNames()
 
 
