@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&family=Ubuntu:wght@300&display=swap');
+/*************** General Styling ********************/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    box-sizing: border-box;
+
+font-family: 'Ubuntu', sans-serif;
+font-size: 16px;
+     /* font-family: Arial, Helvetica, sans-serif;*/
+
+
+
+}
+a {
+    text-decoration: none;
+    outline: none;
+}
+li {
+    list-style: none;
+}
+
+/********** General Layout***************/
+.container {
+  
+}
+/********* Header ***********/
+
+.header{
+    padding: 1rem 5rem;
+     background-color: #333;
+}
+.nav-links {
+    color: #fff;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.nav {
+   display: flex;
+   justify-content: space-between;
+}
+.logo {
+    font-size: 1.2rem;
+    letter-spacing: 1.2px;
+}
+.navbar {
+   display: flex;
+   width: 10rem;
+   justify-content: space-between;
+}
+
+/***************** Section 1 styling *********************/
+
+.section-one {
+    padding: 1rem 5rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    justify-items: space-between;
+}
+.banker, .work, .laptops {
+height: 25vh;
+    width: 15vw;
+      padding: 1rem;
+    background-color:  #f2f2f2;
+    border-radius: 5px;
+
+
+}
+.banker, .work {
+
+     display: flex;
+    flex-direction: column;
+    justify-content: space-around;   
+}
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-content {
+    display: flex;
+    justify-content: space-between;
+
+}
+/************* Buttons styling ********************/
+.btn-loan, .btn-bank, .btn-work {
+    outline: none;
+    border: 0; 
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn-loan {
+     width: 100%;
+    padding: 10px;
+     background-color: #00ff99;
+}
+.btn-work, .btn-bank {
+    padding: 8px;
+    width: 5rem;
+}
+.btn-bank{
+    background-color: 	 #ffff00;
+}
+.btn-work {
+    background-color:  #008ae6;
+    color: white;
+}
