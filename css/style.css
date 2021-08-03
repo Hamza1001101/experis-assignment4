@@ -109,7 +109,7 @@ img {
      background-color: #f2f2f2;
      padding: 1rem 5rem;
      grid-column: 1/-1;
-     height: 25vh;
+
      display: flex;
      justify-content: space-between;
 }
@@ -121,4 +121,9 @@ img {
 }
 .text-section, .btn-section {
     width: 17rem;
+}
+.laptop-images {
+    max-width: 100%;
+    height: 35vh;
+    background-color: #f2f2f2;
 }

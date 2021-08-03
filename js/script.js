@@ -1,17 +1,28 @@
 const balance = 250;
 
 document.querySelector(".balance-price").innerHTML = balance;
+const outstandingLoan = document.querySelector('.standing-loan')
 
 let loanBtn = document.querySelector(".btn-loan");
+let loanCounter = 0 
 
 loanBtn.addEventListener("click", () => {
   let userInput = prompt("How much loan do you want to take? ");
   let loan = +userInput;
   let maxLoan = balance * 2;
+  if(loanCounter>=1) {
+    alert('You cannot more loan')
+    return
+  }
   if (loan > maxLoan) {
     alert(`Ooobs! You cannot get a loan greater than ${maxLoan}`);
-  } else alert(`Congratis You got a new loan!`);
-});
+  } else {
+    loanCounter++; 
+    outstandingLoan.innerText =  `Your outstanding Loan ${loan} Kr` //loan; 
+  }
+  
+})
+
 
 /**
  * Fetch Data and display it.
@@ -60,7 +71,9 @@ const handleLaptopContentChange = (e) => {
   laptopDescription.innerText = selectedLaptop.description
 
   //this is where I'm struggling ??
-  imageRandom.srcset= selectedLaptop.image
+  imageRandom.src= `https://noroff-komputer-store-api.herokuapp.com/${selectedLaptop.image}` 
+
+  
 };
 
 getItemNames();
