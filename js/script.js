@@ -11,7 +11,7 @@ loanBtn.addEventListener("click", () => {
   let loan = +userInput;
   let maxLoan = balance * 2;
   if(loanCounter>=1) {
-    alert('You cannot more loan')
+    alert('You cannot take more loan')
     return
   }
   if (loan > maxLoan) {
