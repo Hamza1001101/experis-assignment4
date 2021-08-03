@@ -18,6 +18,9 @@
  li {
      list-style: none;
 }
+img {
+    max-width: 100%;
+}
 /********** General Layout***************/
  .container {
 }
@@ -70,7 +73,7 @@
      justify-content: space-between;
 }
 /************* Buttons styling ********************/
- .btn-loan, .btn-bank, .btn-work {
+ .btn-loan, .btn-bank, .btn-work, .btn-buy-now {
      outline: none;
      border: 0;
      cursor: pointer;
@@ -95,6 +98,12 @@
  #laptops {
      margin-bottom: 1rem;
 }
+.btn-buy-now {
+    width: 100%;
+    padding: 10px;
+    background-color:  #1ac6ff;
+    font-weight: bold;
+}
 /********************** Show content section styliing ************************/
  .show-content {
      background-color: #f2f2f2;
@@ -104,6 +113,12 @@
      display: flex;
      justify-content: space-between;
 }
- .text-section {
-     width: 20rem;
+ 
+.text-section,.btn-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.text-section, .btn-section {
+    width: 17rem;
 }

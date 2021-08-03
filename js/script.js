@@ -13,35 +13,54 @@ loanBtn.addEventListener("click", () => {
   } else alert(`Congratis You got a new loan!`);
 });
 
-
-
-const fetchData = async ()  => {
-    try {
-    const response = await fetch('https://noroff-komputer-store-api.herokuapp.com/computers')
+/**
+ * Fetch Data and display it.
+ * @returns
+ */
+const fetchData = async () => {
+  try {
+    const response = await fetch(
+      "https://noroff-komputer-store-api.herokuapp.com/computers"
+    );
     return await response.json();
   } catch (error) {
-    console.log('Something went wrong', error);
-  } 
-}
+    console.log("Something went wrong", error);
+  }
+};
 
+const selectLaptops = document.getElementById("laptops");
+const imageRandom = document.getElementById("imageRandom");
+const laptopPrice = document.querySelector(".laptop-price");
+const laptopName = document.querySelector(".text-header");
+const laptopDescription = document.querySelector(".text-content");
 
-
-const selectLaptops = document.getElementById('laptops')
-
+let DATA = [];
 const getItemNames = async () => {
+  DATA = await fetchData();
 
-    const data = await fetchData();
+  //console.log(Array.isArray(DATA))
+  for (let i = 0; i < DATA.length; i++) {
+    let element = document.createElement("option");
+    element.innerText = DATA[i].title;
 
-    for(let i=0; i < data.length; i++) {
+    selectLaptops.append(element);
+  }
 
-        let element = document.createElement('option')
-        element.innerText= data[i].title
-        selectLaptops.append(element)
-    }
-    //console.log(data[0].title)
-
-}
-
-getItemNames()
+  console.log(DATA[0].image);
+  //laptopName.innerText = selectLaptops.options[selectLaptops.selectedIndex].value;
 
 
+  selectLaptops.addEventListener("change", handleLaptopContentChange);
+};
+
+const handleLaptopContentChange = (e) => {
+  const selectedLaptop = DATA[e.target.selectedIndex];
+  laptopPrice.innerText = selectedLaptop.price;
+  laptopName.innerText = selectedLaptop.title;
+  laptopDescription.innerText = selectedLaptop.description
+
+  //this is where I'm struggling ??
+  imageRandom.srcset= selectedLaptop.image
+};
+
+getItemNames();
