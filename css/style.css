@@ -1,116 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&family=Ubuntu:wght@300&display=swap');
 /*************** General Styling ********************/
-
-* {
-    padding: 0;
-    margin: 0;
+ * {
+     padding: 0;
+     margin: 0;
 }
-body {
-    box-sizing: border-box;
-
-font-family: 'Ubuntu', sans-serif;
-font-size: 16px;
-     /* font-family: Arial, Helvetica, sans-serif;*/
-
-
-
+ body {
+     box-sizing: border-box;
+     font-family: 'Ubuntu', sans-serif;
+     font-size: 16px;
+    /* font-family: Arial, Helvetica, sans-serif;
+    */
 }
-a {
-    text-decoration: none;
-    outline: none;
+ a {
+     text-decoration: none;
+     outline: none;
 }
-li {
-    list-style: none;
+ li {
+     list-style: none;
 }
-
 /********** General Layout***************/
-.container {
-  
+ .container {
 }
 /********* Header ***********/
-
-.header{
-    padding: 1rem 5rem;
+ .header{
+}
+ .nav-links {
+     color: #fff;
+     font-family: 'Oxygen', sans-serif;
+}
+ .nav {
+     display: flex;
+     justify-content: space-between;
+     padding: 1rem;
      background-color: #333;
 }
-.nav-links {
-    color: #fff;
-    font-family: 'Oxygen', sans-serif;
+ .logo {
+     font-size: 1.2rem;
+     letter-spacing: 1.2px;
+     margin-left: 9rem;
 }
-
-.nav {
-   display: flex;
-   justify-content: space-between;
+/***************** (Main) Section 1 styling *********************/
+ .main {
+     margin: 3rem 10rem;
 }
-.logo {
-    font-size: 1.2rem;
-    letter-spacing: 1.2px;
+ .section-one {
+     display: grid;
+     grid-template-columns: repeat(3, 17rem);
+     grid-template-rows: repeat(2, max-content);
+     grid-gap: 5rem 2rem;
+     justify-content: space-between;
 }
-.navbar {
-   display: flex;
-   width: 10rem;
-   justify-content: space-between;
+ .banker, .work, .laptops {
+     height: 25vh;
+     padding: 1rem;
+     background-color: #f2f2f2;
+     border-radius: 5px;
 }
-
-/***************** Section 1 styling *********************/
-
-.section-one {
-    padding: 1rem 5rem;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 2rem;
-    justify-items: space-between;
-}
-.banker, .work, .laptops {
-height: 25vh;
-    width: 15vw;
-      padding: 1rem;
-    background-color:  #f2f2f2;
-    border-radius: 5px;
-
-
-}
-.banker, .work {
-
+ .banker, .work {
      display: flex;
-    flex-direction: column;
-    justify-content: space-around;   
+     flex-direction: column;
+     justify-content: space-around;
 }
-.btns {
-    display: flex;
-    justify-content: space-between;
+ .btns {
+     display: flex;
+     justify-content: space-between;
 }
-
-.article-content {
-    display: flex;
-    justify-content: space-between;
-
+ .article-content {
+     display: flex;
+     justify-content: space-between;
 }
 /************* Buttons styling ********************/
-.btn-loan, .btn-bank, .btn-work {
-    outline: none;
-    border: 0; 
-    cursor: pointer;
-    border-radius: 4px;
+ .btn-loan, .btn-bank, .btn-work {
+     outline: none;
+     border: 0;
+     cursor: pointer;
+     border-radius: 4px;
 }
-.btn-loan {
+ .btn-loan {
      width: 100%;
-    padding: 10px;
+     padding: 10px;
      background-color: #00ff99;
 }
-.btn-work, .btn-bank {
-    padding: 8px;
-    width: 5rem;
+ .btn-work, .btn-bank {
+     padding: 8px;
+     width: 5rem;
 }
-.btn-bank{
-    background-color: 	 #ffff00;
+ .btn-bank{
+     background-color: #ffff00;
 }
-.btn-work {
-    background-color:  #008ae6;
-    color: white;
+ .btn-work {
+     background-color: #008ae6;
+     color: white;
 }
-
-#laptops {
-    margin-bottom: 1rem;
+ #laptops {
+     margin-bottom: 1rem;
+}
+/********************** Show content section styliing ************************/
+ .show-content {
+     background-color: #f2f2f2;
+     padding: 1rem 5rem;
+     grid-column: 1/-1;
+     height: 25vh;
+     display: flex;
+     justify-content: space-between;
+}
+ .text-section {
+     width: 20rem;
 }

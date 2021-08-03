@@ -15,20 +15,27 @@ loanBtn.addEventListener("click", () => {
 
 
 
-function fetchData() {
-    return fetch('https://noroff-komputer-store-api.herokuapp.com/computers')
-    .then(response => {return response.json();}) 
+const fetchData = async ()  => {
+    try {
+    const response = await fetch('https://noroff-komputer-store-api.herokuapp.com/computers')
+    return await response.json();
+  } catch (error) {
+    console.log('Something went wrong', error);
+  } 
 }
 
+
+
 const selectLaptops = document.getElementById('laptops')
-async function getItemNames() {
-    const result = [];
+
+const getItemNames = async () => {
+
     const data = await fetchData();
 
     for(let i=0; i < data.length; i++) {
-        let item = data[i]
+
         let element = document.createElement('option')
-        element.innerHTML= data[i].title
+        element.innerText= data[i].title
         selectLaptops.append(element)
     }
     //console.log(data[0].title)
