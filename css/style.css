@@ -50,7 +50,7 @@ img {
      display: grid;
      grid-template-columns: repeat(3, 17rem);
      grid-template-rows: repeat(2, max-content);
-     grid-gap: 5rem 2rem;
+     grid-gap: 4rem 2rem;
      justify-content: space-between;
 }
  .banker, .work, .laptops {
