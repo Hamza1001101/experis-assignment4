@@ -166,14 +166,7 @@
          displayPay.innerText = payBalance;
      }
  };
- 
- btnWork.addEventListener("click", handlePay);
- btnBank.addEventListener("click", handleBank);
- 
- btnLoan.addEventListener("click", handleLoan);
- 
- btnRepay.addEventListener("click", handleRepay);
- 
+
  btnBuy.addEventListener("click", () => {
      if (LAPTOP_PRICE <= currentBalance) {
          alert("You got a new computer");
@@ -184,4 +177,12 @@
          alert("Insuffient amount");
      }
  });
+  
+ 
+ btnWork.addEventListener("click", handlePay);
+ btnBank.addEventListener("click", handleBank);
+ 
+ btnLoan.addEventListener("click", handleLoan);
+
+ btnRepay.addEventListener("click", handleRepay);
  
