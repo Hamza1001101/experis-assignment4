@@ -71,6 +71,7 @@ img {
  .article-content {
      display: flex;
      justify-content: space-between;
+     
 }
 /************* Buttons styling ********************/
  .btn-loan, .btn-bank, .btn-work, .btn-buy-now {
