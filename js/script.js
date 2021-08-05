@@ -70,7 +70,7 @@ const handleLoan = () => {
   let loansTaken = 0; 
 
 
-  if(loansTaken > 0) {
+  if(loansTaken >= 1) {
     alert('Buy something first')
     return
   }
