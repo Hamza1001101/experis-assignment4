@@ -7,7 +7,7 @@ const imageRandom = document.getElementById("imageRandom");
 const laptopPrice = document.querySelector(".laptop-price");
 const laptopName = document.querySelector(".text-header");
 const laptopDescription = document.querySelector(".text-content");
-
+const features = document.querySelector(".specs");
 let LAPTOP_PRICE = 0;
 let DATA = [];
 let payBalance = 0;
@@ -15,9 +15,7 @@ let isLoanTaken = false;
 let isLaptopBuy = false;
 let currentBalance = 0;
 let specs = [];
-//let totalBalance = 0;
 
-//let outstandingLoan = 0;
 let loan = 0;
 
 /**
@@ -35,8 +33,6 @@ const fetchData = async () => {
   }
 };
 
-const features = document.querySelector(".specs");
-
 const getItemNames = async () => {
   DATA = await fetchData();
 
@@ -44,10 +40,8 @@ const getItemNames = async () => {
   for (let i = 0; i < DATA.length; i++) {
     let element = document.createElement("option");
 
-    element.innerText = DATA[i].title; // DATA[i] //.title;
-
+    element.innerText = DATA[i].title;
     selectLaptops.append(element);
-
     displaySpecs(DATA[0].specs);
     getLaptopInformation(DATA[0]);
   }
@@ -55,25 +49,24 @@ const getItemNames = async () => {
   selectLaptops.addEventListener("change", handleLaptopContentChange);
 };
 
+/**
+ * Display laptop info
+ * @param {*} e
+ */
 const handleLaptopContentChange = (e) => {
   const selectedLaptop = DATA[e.target.selectedIndex];
   getLaptopInformation(selectedLaptop);
-  /*laptopPrice.innerText = selectedLaptop.price;
-  laptopName.innerText = selectedLaptop.title;
-  laptopDescription.innerText = selectedLaptop.description;
 
-  imageRandom.src = `https://noroff-komputer-store-api.herokuapp.com/${selectedLaptop.image}`;*/
-  //LAPTOP_PRICE = selectedLaptop.price;
   DATA[e.target.selectedIndex].specs.forEach((element) => {
     specs.push(element);
   });
 
   displaySpecs(specs);
   specs = [];
-  //console.log(DATA[e.target.selectedIndex].specs)
 };
 
 getItemNames();
+
 const getLaptopInformation = (laptopInfo) => {
   laptopPrice.innerText = laptopInfo.price;
   laptopName.innerText = laptopInfo.title;
@@ -81,34 +74,25 @@ const getLaptopInformation = (laptopInfo) => {
   LAPTOP_PRICE = laptopInfo.price;
   imageRandom.src = `https://noroff-komputer-store-api.herokuapp.com/${laptopInfo.image}`;
 };
-/*function content(i) {
-  laptopPrice.innerText = DATA[i].price
-  laptopDescription.innerText = DATA[i].description
-  laptopName.innerText = DATA[i].title
-  imageRandom.src = `https://noroff-komputer-store-api.herokuapp.com/${DATA[i].image}`;
-}*/
 
 const displaySpecs = (specs) => {
   features.innerText = "";
   specs.forEach((item) => {
     let li = document.createElement("li");
-    li.innerText += '✔️' +item ;
+    li.innerText += "✔️" + item;
     features.appendChild(li);
   });
 };
 
 /**
- * Bank info
+ * Bank info related elements
  */
 
 const displayBalance = document.querySelector(".current-balance");
 const displayOutstandingLoan = document.querySelector(".standing-loan");
-/*const remainingBalancePlusLoan = document.querySelector(
-     ".remaining-balance-plus-loan"
- );*/
 
 /**
- * Work info
+ * Work related elements
  */
 
 const displayPay = document.querySelector(".pay-amount");
@@ -119,10 +103,12 @@ const btnBuy = document.querySelector(".btn-buy-now");
 
 const btnRepay = document.querySelector(".repay-btn");
 btnRepay.hidden = true;
-/**
- * * Work & Pay
- */
 
+/**
+ * calculate percentage
+ * @param {*} value
+ * @returns
+ */
 const calcPercent = (value) => {
   return (value = value * (1 - 0.1));
 };
@@ -142,11 +128,6 @@ const handleBank = () => {
   if (loan > 0.1) {
     let amountToBePaid = payBalance / 10;
     loan -= amountToBePaid;
-
-    console.log("Loan " + loan);
-    console.log("Paybalance " + payBalance);
-    console.log("amount to be paid", amountToBePaid);
-
     if (loan < 0) {
       currentBalance += Math.abs(loan);
       loan = 0;
@@ -155,7 +136,6 @@ const handleBank = () => {
     }
 
     payBalance = calcPercent(payBalance);
-
     displayOutstandingLoan.innerText = `Your outstanding loan is ${loan} Kr`;
   }
   currentBalance += payBalance;
@@ -164,17 +144,22 @@ const handleBank = () => {
   displayPay.innerText = 0;
 };
 
-//let currentBalancePlustLoan = 0;
-
 const handleLoan = () => {
   let userInput = prompt("How much loan do you need?");
 
   if (userInput === "" || userInput === null || isNaN(userInput)) {
-    return alert("Sorry You Need to enter a valid value");
+    return Toastify({
+      text: "Sorry You need to enter a valid value",
+      backgroundColor: "red",
+      className: "info",
+    }).showToast();
   }
   if (loan > 0) {
-    alert("Pay the outstanding amount first");
-    return;
+    return Toastify({
+      text: "Pay the outstanding amount first!",
+      backgroundColor: "red",
+      className: "info",
+    }).showToast();
   }
 
   loan = +userInput;
@@ -183,12 +168,20 @@ const handleLoan = () => {
   if (loan > allowedLoan) {
     loan = 0;
     // currentBalance = 0;
-    return alert("Sorry You cannot take that much loan!");
+    return Toastify({
+      text: "Sorry You cannot take that much loan 💵 ",
+      backgroundColor: "red",
+      className: "info",
+    }).showToast();
   }
 
   if (isLaptopBuy === true) {
     loan = 0;
-    return alert("hehe catch ya");
+    return Toastify({
+      text: "Sorry You need to buy a computer 💻 first ",
+      backgroundColor: "red",
+      className: "info",
+    }).showToast();
   } else {
     currentBalance += loan;
     displayOutstandingLoan.innerText = `Your outstanding loan is ${loan} Kr`;
@@ -196,7 +189,6 @@ const handleLoan = () => {
     btnRepay.hidden = false;
     isLaptopBuy = true;
   }
-  console.log(isLaptopBuy);
 };
 
 const handleRepay = () => {
@@ -208,14 +200,13 @@ const handleRepay = () => {
     displayPay.innerText = -loan;
     payBalance = -loan;
     loan = 0;
-    displayOutstandingLoan.innerText = `Your outstanding loan is ${loan} Kr`; //loan;
+    displayOutstandingLoan.innerText = `Your outstanding loan is ${loan} Kr`;
     isLoanTaken = false;
-    //displayOutstandingLoan.hidden = true;
+
     btnRepay.hidden = true;
   } else {
     isLoanTaken = true;
     payBalance = 0;
-    // displayOutstandingLoan.hidden = false;
     displayOutstandingLoan.innerText = `Your outstanding loan is ${loan} Kr`;
     displayPay.innerText = payBalance;
   }
@@ -223,8 +214,13 @@ const handleRepay = () => {
 
 btnBuy.addEventListener("click", () => {
   if (LAPTOP_PRICE <= currentBalance) {
-    alert("You got a new computer");
-    //isLoanTaken = false;
+    Toastify({
+      text: "You got a new computer 💻 CONGRATS! ",
+      backgroundColor: "",
+      position: "center",
+      className: "info",
+    }).showToast();
+
     isLaptopBuy = false;
     currentBalance -= LAPTOP_PRICE;
     displayBalance.innerText = currentBalance;
@@ -235,7 +231,5 @@ btnBuy.addEventListener("click", () => {
 
 btnWork.addEventListener("click", handlePay);
 btnBank.addEventListener("click", handleBank);
-
 btnLoan.addEventListener("click", handleLoan);
-
 btnRepay.addEventListener("click", handleRepay);
