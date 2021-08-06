@@ -225,7 +225,12 @@ btnBuy.addEventListener("click", () => {
     currentBalance -= LAPTOP_PRICE;
     displayBalance.innerText = currentBalance;
   } else {
-    alert("Insufficient Amount");
+    Toastify({
+      text: "Insufficient Amount! Do some work or take a loan! 😊",
+      backgroundColor: "linear-gradient(to right, #F01890, #F0004B)",
+      className: "info",
+    }).showToast();
+   
   }
 });
 
