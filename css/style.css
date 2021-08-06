@@ -72,7 +72,7 @@ img {
      
 }
 /************* Buttons styling ********************/
- .btn-loan, .btn-bank, .btn-work, .btn-buy-now {
+ .btn-loan, .btn-bank, .btn-work, .btn-buy-now, .repay-btn {
      outline: none;
      border: 0;
      cursor: pointer;
@@ -102,6 +102,10 @@ img {
     padding: 10px;
     background-color:  #1ac6ff;
     font-weight: bold;
+}
+.repay-btn {
+  border: 1px solid salmon;
+  padding: 8px;
 }
 /********************** Show content section styliing ************************/
  .show-content {
